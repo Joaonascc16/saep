@@ -28,7 +28,7 @@ public class UsuarioController {
     @PostMapping("/login")
     public String processarLogin(@ModelAttribute UsuarioDto usuarioDto, Model model, HttpSession session) {
 
-        if (usuarioDto.getLogin() == null || usuarioDto.getLogin().isBlank()
+        if (usuarioDto.getLogin() == false || usuarioDto.getLogin()
                 || usuarioDto.getSenha() == null || usuarioDto.getSenha().isBlank()) {
             model.addAttribute("erro", "Login e senha são obrigatórios.");
             return "login";

@@ -2,13 +2,13 @@ package com.formulario.saep.dto;
 
 public class UsuarioDto {
 
-    private String login;
+    private boolean login;
     private String senha;
 
     public UsuarioDto() {}
 
-    public String getLogin() { return login; }
-    public void setLogin(String login) { this.login = login; }
+    public boolean getLogin() { return login; }
+    public void setLogin(boolean login) { this.login = login; }
 
     public String getSenha() { return senha; }
     public void setSenha(String senha) { this.senha = senha; }

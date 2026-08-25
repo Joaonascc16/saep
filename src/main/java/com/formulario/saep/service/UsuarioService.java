@@ -13,7 +13,7 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Optional<UsuarioEntity> autenticar(String login, String senha) {
+    public Optional<UsuarioEntity> autenticar(boolean login, String senha) {
         Optional<UsuarioEntity> usuario = usuarioRepository.findByLoginAndSenha(login, senha);
 
         if (usuario.isPresent() && usuario.get().getSenha().equals(senha)) {
