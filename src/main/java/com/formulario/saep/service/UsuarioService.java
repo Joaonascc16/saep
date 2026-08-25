@@ -14,12 +14,12 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     public Optional<UsuarioEntity> autenticar(String login, String senha) {
-        Optional<UsuarioEntity> usuario = usuarioRepository.findByLogin(login);
+        Optional<UsuarioEntity> usuario = usuarioRepository.findByLoginAndSenha(login, senha);
 
         if (usuario.isPresent() && usuario.get().getSenha().equals(senha)) {
+            System.out.println(usuario);
             return usuario;
         }
-
         return Optional.empty();
     }
 }
