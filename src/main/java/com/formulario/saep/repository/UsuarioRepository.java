@@ -1,4 +1,10 @@
 package com.formulario.saep.repository;
 
-public interface UsuarioRepository {
+import com.formulario.saep.entity.UsuarioEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Long> {
+    Optional<UsuarioEntity> findByLogin(String login);
 }

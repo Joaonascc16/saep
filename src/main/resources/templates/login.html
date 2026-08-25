@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1e40af, #2563eb);
+            height: 100vh;
+        }
+        .card {
+            border: none;
+            border-radius: 16px;
+        }
+        .btn-primary {
+            background-color: #2563eb;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #1e40af;
+        }
+    </style>
 </head>
 <body>
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="card p-4 shadow" style="width: 350px;">
+        <h3 class="text-center mb-1">Bem-vindo</h3>
+        <p class="text-center text-muted mb-3">Entre com seus dados</p>
 
+        <!-- Requisito 3: credenciais inválidas exibem mensagem genérica -->
+        <!-- Requisito 2: também usada pra avisar de campo vazio -->
+        <div th:if="${erro != null and !erro.isEmpty()}" class="alert alert-danger" th:text="${erro}"></div>
+
+        <!-- Requisito 1: campos de login e senha visíveis e funcionais -->
+        <form th:action="@{/login}" th:object="${usuarioDto}" method="post">
+            <div class="mb-3">
+                <label class="form-label">Login</label>
+                <input type="text" class="form-control" th:field="*{login}" required autofocus>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Senha</label>
+                <input type="password" class="form-control" th:field="*{senha}" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Entrar</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>
